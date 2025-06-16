@@ -25,7 +25,7 @@
         class="absolute inset-0 bg-gradient-to-b from-[#CCFFC3] to-[#FFFFFF]"
       ></div>
       <div
-        class="absolute inset-0 bg-[url('./assets/bg-regis2.png')] bg-cover bg-center bg-no-repeat opacity-50"
+        class="absolute inset-0 bg-[url('./assets/bg-login.png')] bg-cover bg-center bg-no-repeat opacity-50"
       ></div>
     </div>
 
@@ -78,7 +78,7 @@
               >
                 <a href="dashboard.html" class="hover:text-[#26C3F4]">Beranda</a>
                 <a href="layanan.html" class="hover:text-[#26C3F4]">Layanan</a>
-                <a href="tentang.html" class="hover:text-[#26C3F4]">Tentang Kami</a>
+                <a href="#skills" class="hover:text-[#26C3F4]">Tentang Kami</a>
               </div>
             </div>
           </div>
@@ -87,28 +87,18 @@
 
       <!-- Register Section -->
       <section
-        class="flex flex-col lg:flex-row items-center justify-center px-6 pb-10 gap-10"
+        class="flex flex-col lg:flex-row items-center justify-center px-6 pb-10 pt-24 gap-10"
       >
         <!-- Form -->
         <div class="bg-white p-6 rounded-xl shadow-md w-full max-w-md">
           <div class="flex items-center mb-6">
             <button class="mr-4 text-gray-600 text-xl"><a href="dashboard.html">&larr;</a></button>
             <h1 class="text-2xl font-bold">
-              Daftar <span class="text-[#46A616]">TrashPal</span>
+              Login <span class="text-[#46A616]">TrashPal</span>
             </h1>
           </div>
 
           <form class="space-y-4">
-            <div>
-              <label class="block text-sm font-semibold mb-1"
-                >Nama Lengkap</label
-              >
-              <input
-                type="text"
-                placeholder="Masukkan nama lengkap anda"
-                class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-[#46A616]"
-              />
-            </div>
             <div>
               <label class="block text-sm font-semibold mb-1">Email</label>
               <input
@@ -118,30 +108,10 @@
               />
             </div>
             <div>
-              <label class="block text-sm font-semibold mb-1"
-                >Nomor Telepon</label
-              >
-              <input
-                type="tel"
-                placeholder="Masukkan nomor telepon anda"
-                class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-[#46A616]"
-              />
-            </div>
-            <div>
               <label class="block text-sm font-semibold mb-1">Kata Sandi</label>
               <input
                 type="password"
                 placeholder="Buat kata sandi"
-                class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-[#46A616]"
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-semibold mb-1"
-                >Konfirmasi Kata Sandi</label
-              >
-              <input
-                type="password"
-                placeholder="Konfirmasi kata sandi anda"
                 class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-[#46A616]"
               />
             </div>
@@ -165,19 +135,11 @@
           </form>
 
           <p class="text-sm text-center mt-4">
-            Sudah punya akun?
-            <a href="login.html" class="text-[#46A616] font-medium">Masuk</a>
+            Belum punya akun?
+            <a href="register.html" class="text-[#46A616] font-medium">Daftar</a>
           </p>
         </div>
 
-        <!-- Image -->
-        <div class="hidden lg:block w-full lg:w-1/2 max-w-md">
-          <img
-            src="assets/img_regis.png"
-            alt="Register"
-            class="w-full h-auto object-contain"
-          />
-        </div>
       </section>
     </div>
 
