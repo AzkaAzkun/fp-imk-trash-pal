@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Dashboard</title>
+    <title>Layanan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -137,50 +137,11 @@
         </nav>
       </section>
 
-      <!-- Hero Section -->
-      <section id="hero" class="w-full bg-opacity-0">
-        <div
-          class="container mx-auto flex flex-col lg:flex-row items-center justify-between px-6 lg:px-24 py-16"
-        >
-          <!-- Text Section -->
-          <div class="w-full lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left">
-            <h2 class="text-[48px] lg:text-[72px] leading-snug font-bold">
-              Bank Sampah<br />
-              <span class="text-[#46A616]"> Digital </span>
+    <section class="container mx-auto px-6 lg:px-24 pt-24 pb-2">
+        <div class="w-full lg:w-1/2">
+            <h2 class="font-bold text-left text-[72px] leading-snug">Layanan <span class="text-[#46A616]">Kami</span>
             </h2>
-            <p
-              class="text-gray-600 text-[20px] lg:text-[30px] leading-relaxed mt-4"
-            >
-              Kemudahan sekarang ada di tangan Anda.
-              <span class="text-[#46A616] font-semibold">TrashPal</span> hadir
-              untuk anda.
-            </p>
-            <button
-              class="rounded-[18px] px-[19px] py-[13px] my-10 text-lg text-white bg-[#46A616] hover:bg-green-700 transition duration-300 w-[206px] h-[53px]"
-            >
-            <a href="{{ route('register') }}">Daftar Sekarang</a>
-            </button>
-          </div>
-
-          <!-- Image Section: Hidden on mobile -->
-          <div class="hidden lg:flex w-full lg:w-1/2 justify-center">
-            <img
-              src="{{  asset('images/img_hero.png')}}"
-              class="max-w-full h-auto"
-              alt="Hero Image"
-            />
-          </div>
         </div>
-      </section>
-    </div>
-
-    <!-- Mengapa TrashPal Section -->
-    <section>
-      <div class="py-24 mx-auto">
-        <h2 class="font-bold text-center text-[72px] leading-snug">
-          Mengapa <span class="text-[#46A616]">TrashPal</span> ?
-        </h2>
-      </div>
     </section>
 
     <!-- item 1 -->
@@ -189,7 +150,7 @@
     >
       <!-- Teks -->
       <div class="w-full lg:w-1/2">
-        <h1 class="font-bold mb-4 text-[40px] lg:text-[40px] leading-snug">
+        <h1 class="font-semibold mb-4 text-[40px] lg:text-[40px] leading-snug">
           Pendaftaran ke bank <br />
           sampah terdekat
         </h1>
@@ -200,7 +161,7 @@
       </div>
       <!-- Gambar -->
       <div class="flex justify-center">
-        <img src="{{  asset('images/img1.png')}}" alt="Pendaftaran Bank Sampah" />
+        <img src="{{ asset('images/img1.png') }}" alt="Pendaftaran Bank Sampah" />
       </div>
     </section>
 
@@ -210,7 +171,7 @@
     >
       <!-- Gambar -->
       <div class="flex justify-center">
-        <img src="{{  asset('images/img2.png')}}" alt="Pendaftaran Bank Sampah" />
+        <img src="{{ asset('images/img2.png') }}" alt="Pendaftaran Bank Sampah" />
       </div>
 
       <!-- Teks -->
@@ -225,6 +186,7 @@
         </p>
       </div>
     </section>
+    </div>
 
     <!-- item 3 -->
     <section
@@ -244,9 +206,10 @@
       </div>
       <!-- Gambar -->
       <div class="flex justify-center">
-        <img src="{{  asset('images/img3.png')}}" alt="Pendaftaran Bank Sampah" />
+        <img src="{{ asset('images/img3.png') }}" alt="Pendaftaran Bank Sampah" />
       </div>
     </section>
+
 
     <!-- Mengapa TrashPal Section -->
     <section>
@@ -274,7 +237,7 @@
           lebih hijau bersama <span class="text-[#46A616]">KAMU</span> dari
           rumah.
         </p>
-         @auth
+        @auth
         <a href="{{ route('dashboard') }}"
             class="inline-block rounded-[18px] px-[19px] py-[13px] my-10 text-lg text-white bg-[#46A616] hover:bg-green-700 transition duration-300 text-[20px] w-[206px] h-[53px] text-center">
             Layanan

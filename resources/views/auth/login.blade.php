@@ -67,7 +67,11 @@
                 </h1>
             </div>
 
-          <form class="space-y-5 px-6">
+          <form
+            action="{{ route('auth.login') }}"
+            method='POST'
+            class="space-y-5 px-6">
+            @csrf
            {{-- form email --}}
             <div>
                 <label class="block text-xl font-light mb-3">Email</label>
@@ -117,21 +121,9 @@
                 </div>
             </div>
 
-            {{-- form menyetujui syarat dan ketentuan --}}
-            <label class="flex items-center text-base cursor-pointer gap-2">
-                <input id="agreeCheck" type="checkbox" class="hidden peer" />
-                <div class="w-6 h-6 mr-1 rounded-[50%] border-2 border-gray-400 peer-checked:bg-[#46A616] transition"></div>
-                <span>
-                    Saya menyetujui
-                    <a class="text-[#46A616]">Syarat dan Ketentuan</a>
-                    serta
-                    <a class="text-[#46A616]">Kebijakan Privasi</a>
-                </span>
-            </label>
-
             <button
               type="submit"
-              class="bg-[#46A616] text-white font-semibold w-full py-2 rounded-[15px] shadow hover:shadow-md hover:bg-green-700 transition duration-300 h-[47px]"
+              class="bg-[#46A616] text-white font-semibold w-full py-2 rounded-[15px] shadow hover:shadow-md !mt-[50px] hover:bg-green-700 transition duration-300 h-[47px]"
             >
               Masuk
             </button>

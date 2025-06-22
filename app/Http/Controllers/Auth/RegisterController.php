@@ -16,7 +16,7 @@ class RegisterController extends Controller
             'phoneInput' => 'required|string',
             'passwordInput' => 'required|min:6',
         ]);
-        // dd($request->all());
+
         // Ambil datanya
         $name = $request->input('nameInput');
         $email = $request->input('emailInput');
