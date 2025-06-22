@@ -40,7 +40,7 @@
         >
           <!-- Logo -->
           <div class="flex items-center">
-            <a href="landing.html" class="text-2xl font-bold">
+            <a href="{{ route('home') }}" class="text-2xl font-bold">
               <img
                 src="{{ asset('images/Logo.png') }}"
                 alt="Logo"

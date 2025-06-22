@@ -78,7 +78,7 @@
                                         ? asset('storage/foto_profil/' . auth()->user()->foto_profil)
                                         : asset('images/foto-default.png') }}"
                                     alt="Foto Profil"
-                                    class="w-10 h-10 rounded-full object-cover"
+                                    class="w-[55px] h-[55px] rounded-full object-cover"
                                 />
                                 <p class="text-lg font-semibold px-[19px] py-[13px]">
                                     {{ explode(' ', auth()->user()->nama)[0] }}
@@ -89,7 +89,7 @@
                             <div id="dropdownMenu"
                                 class="hidden absolute right-0 mt-2 w-[300px] bg-[#f8fff9] border rounded-xl shadow-lg z-50 p-3">
                                 <div
-                                    class="flex justify-center py-5"
+                                    class="flex justify-center py-5 w-full"
                                 >
                                     <img
                                         src="{{ auth()->user()->foto_profil
@@ -127,7 +127,7 @@
                         </a>
                         <a
                         href="{{ route('login') }}"
-                        class="bg-white text-[#46A616] border border-[#46A616] px-[23px] py-[11px] rounded-[15px] hover:bg-green-700 hover:text-white transition duration-300 shadow-lg"
+                        class="bg-white text-[#46A616] border border-[#46A616] px-[23px] py-[11px] rounded-[15px] hover:bg-[#ebffe3] hover:text-[#46A616] transition duration-300 shadow-lg"
                         >
                         Masuk
                         </a>

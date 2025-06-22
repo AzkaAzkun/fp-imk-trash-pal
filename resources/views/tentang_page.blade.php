@@ -127,7 +127,7 @@
                         </a>
                         <a
                         href="{{ route('login') }}"
-                        class="bg-white text-[#46A616] border border-[#46A616] px-[23px] py-[11px] rounded-[15px] hover:bg-green-700 hover:text-white transition duration-300 shadow-lg"
+                        class="bg-white text-[#46A616] border border-[#46A616] px-[23px] py-[11px] rounded-[15px] hover:bg-[#ebffe3] hover:text-[#46A616] transition duration-300 shadow-lg"
                         >
                         Masuk
                         </a>

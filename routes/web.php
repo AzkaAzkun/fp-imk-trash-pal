@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UserController;
 
 // web routes
 Route::get('/', function () {return view('welcome');});
@@ -19,5 +20,12 @@ Route::middleware(['auth'])->group(function () {
 Route::prefix('auth')->name('auth.')->group(function () {
     Route::post('/register', [RegisterController::class, 'store'])->name('register');
     Route::post('/login', [LoginController::class, 'login'])->name('login');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::post('/logout', [LoginController::class, 'logout'])->middleware(['auth'])->name('logout');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('users')->group(function () {
+        Route::put('/update-photo', [UserController::class, 'updatePhoto'])->name('user.updatePhoto');
+        Route::put('/update-profil', [UserController::class, 'updateProfil'])->name('user.updateProfil');
+        // Tambah route lain sesuai kebutuhan
+    });
 });

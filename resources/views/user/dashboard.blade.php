@@ -1,270 +1,221 @@
-<!DOCTYPE html>
-<html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/png" href="{{ asset('images/favicon-logo.png') }}">
-    <style>
-      body {
-        font-family: "Poppins", sans-serif;
-      }
-    </style>
-  </head>
+@extends('layouts.dashboard_user')
 
-  <body class="relative min-h-screen overflow-x-hidden font-[Poppins]">
-    <!-- LAYER BACKGROUND -->
-    <div class="absolute inset-0 -z-10">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-[#ccffc3b2] via-[#FFFFFF] to-[#ccffc3b2]"
-      ></div>
-    </div>
+@section('sidebar')
+<!-- Sidebar -->
+<aside class="bg-white shadow-xl rounded-[33px] p-8 w-full lg:w-1/4 flex flex-col items-center text-center">
+    <form action="{{ route('user.updatePhoto') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
 
-    <!-- KONTEN UTAMA -->
-    <div class="relative z-10">
-      <!-- Navbar Section -->
-      <section class="w-full px-4 mx-auto bg-opacity-0">
-        <nav
-          class="mx-auto px-4 flex flex-wrap p-6 justify-between items-center"
-        >
-          <div class="flex items-center">
-            <a href="{{ route('home') }}" class="text-2xl font-bold">
-              <img
-                src="{{  asset('images/Logo.png')}}"
-                alt="Logo"
-                class="w-60 h-20 object-cover object-[center_20%] block"
-              />
-            </a>
-          </div>
+        <input type="file" id="fotoInput" name="foto_profil" class="hidden" onchange="this.form.submit()">
 
-          <!-- Hamburger Button -->
-          <button
-            id="menu-toggle"
-            class="lg:hidden p-2 border border-[#26C3F4] rounded"
-          >
-            <svg
-              class="w-6 h-6 text-black"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-        </nav>
-      </section>
-
-      <div class="flex flex-col lg:flex-row gap-6 p-6 max-w-7xl mx-auto">
-      <!-- Sidebar -->
-      <aside class="bg-white shadow rounded-xl p-6 w-full lg:w-1/4 flex flex-col items-center text-center">
-        <img
-            src="{{ auth()->user()->foto_profil
-                ? asset('storage/foto_profil/' . auth()->user()->foto_profil)
-                : asset('images/foto-default.png') }}"
-            alt="Foto Profil"
-            class="h-24 w-24 rounded-full object-cover mb-2"
-        />
-        <h2 class="text-lg font-semibold">Rizge Madura</h2>
-        <p class="text-sm text-gray-600 mb-4">rizgemaduracarok@gmail.com</p>
-        <button id="btnAkun" class="bg-[#46A616] text-white px-4 py-2 rounded w-full mb-3">Akun Saya</button>
-        <a id="btnRequest" href="#" class="flex items-center gap-2 text-sm mb-2">Request Penjemputan</a>
-        <a id="btnRiwayat" href="#" class="flex items-center gap-2 text-sm mb-4">Riwayat Penjemputan</a>
-        <button class="bg-[#46A616] text-white px-4 py-2 rounded w-full mb-2">Ganti Password</button>
-        <button class="bg-red-500 text-white px-4 py-2 rounded w-full">Keluar</button>
-      </aside>
-
-    <!-- Main Form -->
-    <div class="bg-white shadow rounded-xl p-6 w-full lg:w-3/4">
-    <!-- Form Akun Saya -->
-    <main id="formAkun">
-        <p class="text-black font-semibold">Home > <span class="text-black font-semibold">Akun Saya</span></p>
-        <h1 class="text-2xl font-bold my-4">Akun <span class="text-[#46A616]">Saya</span></h1>
-
-        <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="col-span-2">
-            <label class="block font-semibold mb-1">Nama</label>
-            <input type="text" value="Rizky Rahmadian Makkani" class="w-full border rounded p-2" />
-          </div>
-
-          <div>
-            <label class="block font-semibold mb-1">Username</label>
-            <input type="text" value="Rizge Madura" class="w-full border rounded p-2" />
-          </div>
-
-          <div>
-            <label class="block font-semibold mb-1">Tanggal Lahir</label>
-            <input type="date" class="w-full border rounded p-2" />
-          </div>
-
-          <div class="col-span-2">
-            <label class="block font-semibold mb-1">Wilayah</label>
-            <div class="flex flex-col md:flex-row gap-4">
-              <select class="w-full md:w-1/3 border rounded p-2">
-                <option>Pilih Provinsi</option>
-              </select>
-              <select class="w-full md:w-1/3 border rounded p-2">
-                <option>Pilih Kota</option>
-              </select>
-              <select class="w-full md:w-1/3 border rounded p-2">
-                <option>Pilih Kecamatan</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="col-span-2">
-            <label class="block font-semibold mb-1">Alamat</label>
-            <input type="text" placeholder="Masukkan alamat tempat tinggal anda" class="w-full border rounded p-2" />
-          </div>
-
-          <div>
-            <label class="block font-semibold mb-1">Jenis Kelamin</label>
-            <div class="flex items-center gap-4 mt-1">
-              <label class="inline-flex items-center">
-                <input type="radio" name="gender" class="mr-2 accent-[#46A616]" /> Laki - Laki
-              </label>
-              <label class="inline-flex items-center">
-                <input type="radio" name="gender" class="mr-2 accent-[#46A616]" /> Perempuan
-              </label>
-            </div>
-          </div>
-
-          <div>
-            <label class="block font-semibold mb-1">Email</label>
-            <input type="email" value="rizgemaduracarok@gmail.com" class="w-full border rounded p-2" />
-          </div>
-
-          <div>
-            <label class="block font-semibold mb-1">Nomor Telepon</label>
-            <input type="tel" value="081234567890" class="w-full border rounded p-2" />
-          </div>
-
-          <div class="col-span-2 mt-4">
-            <button type="submit" class="bg-[#46A616] text-white font-semibold px-6 py-2 rounded">Ubah</button>
-          </div>
-        </form>
-      </main>
-
-      <!-- Form Request Penjemputan -->
-      <main id="formRequest" class="hidden">
-        <p class="text-black font-semibold">
-          Home > <span class="text-black font-semibold">Request Penjemputan</span>
-        </p>
-        <h1 class="text-2xl font-bold my-4">
-          Request <span class="text-[#46A616]">Penjemputan</span>
-        </h1>
-
-        <form class="mt-4 space-y-4">
-          <!-- Pilih Bank & Tanggal Penjemputan -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block font-semibold mb-1">Pilih Bank Sampah</label>
-              <select class="border rounded p-2 w-full">
-                <option selected disabled>Pilih Bank Sampah</option>
-                <option>Bank Sampah A</option>
-                <option>Bank Sampah B</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="block font-semibold mb-1">Tanggal Penjemputan</label>
-              <input type="date" class="border rounded p-2 w-full" />
-            </div>
-          </div>
-
-          <!-- Alamat -->
-          <div>
-            <label class="block font-semibold mb-1">Alamat</label>
-            <input
-              type="text"
-              placeholder="Masukkan alamat tempat tinggal anda"
-              class="w-full border rounded p-2"
+        <label for="fotoInput" class="cursor-pointer">
+            <img
+                src="{{ auth()->user()->foto_profil
+                    ? asset('storage/foto_profil/' . auth()->user()->foto_profil)
+                    : asset('images/foto-default.png') }}"
+                alt="Foto Profil"
+                class="h-24 w-24 rounded-full object-cover mb-2 mt-6 hover:opacity-80 transition"
             />
-          </div>
-
-          <!-- Tombol Kirim -->
-          <div>
-            <button
-              type="submit"
-              class="bg-[#46A616] hover:bg-[#3d9014] shadow-md text-white px-6 py-2 rounded font-semibold"
-            >
-              Buat Request
-            </button>
-          </div>
-        </form>
-      </main>
-
-      <!-- Riwayat Penjemputan -->
-      <main id="formRiwayat" class="hidden">
-        <p class="text-black font-semibold">Home > <span class="text-black font-semibold">Riwayat Penjemputan</span></p>
-        <h1 class="text-2xl font-bold my-4">Request <span class="text-[#46A616]">Penjemputan</span></h1>
-        <ul class="list-disc ml-5 space-y-2 text-sm">
-          <li>12 Juni 2025 - Penjemputan sukses</li>
-          <li>5 Juni 2025 - Penjemputan dibatalkan</li>
-          <li>27 Mei 2025 - Penjemputan sukses</li>
-        </ul>
-      </main>
+        </label>
+    </form>
+    <h2 class="text-2xl font-semibold">{{ auth()->user()->nama }}</h2>
+    <p class="text-base text-gray-600 mb-16">{{ auth()->user()->email }}</p>
+    <div class="flex flex-col gap-4 w-full">
+        <a href="#" class="tab-btn bg-[#46A616] text-white font-semibold justify-center flex px-4 py-2 rounded-[15px] items-center text-sm mb-4 w-full h-[51px] md:text-xl" data-target="formAkun"><i class="ph ph-user-circle mr-2 text-3xl"></i>Akun Saya</a>
+        <a href="#" class="tab-btn font-semibold justify-center flex px-4 py-2 rounded-[15px] items-center text-sm mb-4 w-full h-[51px] md:text-xl hover:bg-[#ebffe3]" data-target="formRequest"><i class="ph ph-box-arrow-up mr-2 text-3xl"></i>Request Penjemputan</a>
+        <a href="#" class="tab-btn font-semibold justify-center flex px-4 py-2 rounded-[15px] items-center text-sm mb-4 w-full h-[51px] md:text-xl hover:bg-[#ebffe3]" data-target="formRiwayat"><i class="ph ph-clock-counter-clockwise mr-2 text-3xl"></i>Riwayat Penjemputan</a>
     </div>
-  </div>
-    <!-- Script: Toggle Mobile Menu -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const toggle = document.getElementById("menu-toggle");
-        const menu = document.getElementById("menu");
+    <div class="mt-16 w-[90%] flex flex-col gap-4">
+        <form action="">
+            <a href="#" class="bg-[#46A616] hover:bg-[#46A616d0] font-semibold text-white text-semibold justify-center flex px-4 py-2 rounded-[15px] items-center gap-4 text-sm mb-4 w-full h-[51px] shadow-md md:text-xl">Ganti Password</a>
+        </form>
+        <form
+            action="{{ route('auth.logout') }}"
+            method="POST">
+            @csrf
+        <button
+            type="submit"
+            class="bg-[#E05555] hover:bg-[#E05555d0] font-semibold text-white px-4 py-2 gap-4 rounded-[15px] w-full h-[51px] text-sm shadow-md md:text-xl">Keluar</button>
+        </form>
+    </div>
+</aside>
+@endsection
 
-        toggle.addEventListener("click", function () {
-          menu.classList.toggle("hidden");
-        });
-      });
+@section('akun-saya')
+<!-- Form Akun Saya -->
+<main id="formAkun" class="bg-white shadow-xl rounded-[33px] p-12 w-full lg:w-3/4">
+    <p class="text-black text-xl font-semibold">Home > <span class="text-black font-semibold">Akun Saya</span></p>
+    <h1 class="text-4xl font-bold my-4">Akun <span class="text-[#46A616]">Saya</span></h1>
 
-      document.addEventListener("DOMContentLoaded", function () {
-      const toggle = document.getElementById("menu-toggle");
-      const menu = document.getElementById("menu");
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+            <label class="block font-semibold mb-1 text-xl">Nama</label>
+            <p class="w-full rounded text-xl py-3 text-gray-600">{{ auth()->user()->nama }}</p>
+        </div>
 
-      toggle.addEventListener("click", function () {
-        menu.classList.toggle("hidden");
-      });
+        <div>
+            <label class="block font-semibold mb-1 text-xl">Tanggal Lahir</label>
+            <p class="w-full rounded text-xl py-3 text-gray-600">{{ auth()->user()->tanggal_lahir ?? '-'}}</p>
+        </div>
 
-      const btnRequest = document.getElementById("btnRequest");
-      const btnRiwayat = document.getElementById("btnRiwayat");
-      const formAkun = document.getElementById("formAkun");
-      const formRequest = document.getElementById("formRequest");
-      const formRiwayat = document.getElementById("formRiwayat");
-      const btnAkun = document.getElementById("btnAkun");
+        <div>
+            <label class="block font-semibold mb-1 text-xl">Nomor Telepon</label>
+            <p class="w-full rounded text-xl py-3 text-gray-600">{{ auth()->user()->nomor_telepon }}</p>
+        </div>
 
+        <div>
+            <label class="block font-semibold mb-1 text-xl">Email</label>
+            <p class="w-full rounded text-xl py-3 text-gray-600">{{ auth()->user()->email }}</p>
+        </div>
 
-      btnAkun.addEventListener("click", function (e) {
-        e.preventDefault();
-        formRequest.classList.add("hidden");
-        formRiwayat.classList.add("hidden");
-        formAkun.classList.remove("hidden");
-      });
+        <div>
+            <label class="block font-semibold mb-1 text-xl">Alamat</label>
+            <p class="w-full rounded text-xl py-3 text-gray-600">{{ auth()->user()->alamat ?? '-' }}</p>
+        </div>
 
-      btnRequest.addEventListener("click", function (e) {
-        e.preventDefault();
-        formAkun.classList.add("hidden");
-        formRiwayat.classList.add("hidden");
-        formRequest.classList.remove("hidden");
-      });
+        <div>
+            <label class="block font-semibold mb-1 text-xl">Jenis Kelamin</label>
+            <p class="mt-3 text-lg text-gray-600">
+                @if (auth()->user()->jenis_kelamin === 'L')
+                    Laki - Laki
+                @elseif (auth()->user()->jenis_kelamin === 'P')
+                    Perempuan
+                @else
+                    -
+                @endif
+            </p>
+        </div>
 
-      btnRiwayat.addEventListener("click", function (e) {
-        e.preventDefault();
-        formAkun.classList.add("hidden");
-        formRequest.classList.add("hidden");
-        formRiwayat.classList.remove("hidden");
-      });
-    });
-    </script>
-  </body>
-</html>
+        <div class="col-span-2 mt-12">
+            <button id="btnToEdit" class="bg-[#46A616] text-white font-semibold px-6 py-2 rounded-[15px] min-w-[170px] min-h-[47px] hover:bg-[#46A616d0] transition duration-300">Ubah</button>
+        </div>
+    </div>
+</main>
+
+<!-- Form Akun Saya -->
+<main id="formAkunEdit" class="bg-white shadow-xl rounded-[33px] p-12 w-full lg:w-3/4 hidden">
+    <p class="text-black text-xl font-semibold">Home > <span class="text-black font-semibold">Akun Saya</span></p>
+    <h1 class="text-4xl font-bold my-4">Akun <span class="text-[#46A616]">Saya</span></h1>
+
+    <form
+        action="{{ route('user.updateProfil') }}"
+        method="POST"
+        class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        @csrf
+        @method('PUT')
+        <div>
+            <label class="block font-semibold mb-1 text-xl">Nama</label>
+            <input type="text" name="nameInput" placeholder="Masukkan Nama Anda" value="{{ auth()->user()->nama }}" required class="w-full border rounded p-3" />
+        </div>
+
+        <div>
+            <label class="block font-semibold mb-1 text-xl">Tanggal Lahir</label>
+            <input type="date" name="tanggalLahirInput" class="w-full border rounded p-3" />
+        </div>
+
+        <div>
+            <label class="block font-semibold mb-1 text-xl">Nomor Telepon</label>
+            <input type="tel" name="phoneInput" placeholder="Masukkan Nomor Telepon Anda" value="{{ auth()->user()->nomor_telepon }}" class="w-full border rounded p-3" required/>
+        </div>
+
+        <div>
+            <label class="block font-semibold mb-1 text-xl">Email</label>
+            <input type="email" value="{{ auth()->user()->email }}" readonly class="w-full border rounded p-3" />
+        </div>
+
+        <div class="col-span-2">
+            <label class="block font-semibold mb-1 text-xl">Alamat</label>
+            <input type="text" name="alamatInput" placeholder="Masukkan alamat tempat tinggal anda" class="w-full border rounded p-3" />
+        </div>
+
+        <div>
+            <label class="block font-semibold mb-1 text-xl">Jenis Kelamin</label>
+            <div class="flex items-center gap-4 mt-3">
+                <label class="inline-flex items-center">
+                    <input type="radio" name="genderInput" value="L" class="mr-2 accent-[#46A616]" required />
+                    Laki - Laki
+                </label>
+                <label class="inline-flex items-center">
+                    <input type="radio" name="genderInput" value="P" class="mr-2 accent-[#46A616]" />
+                    Perempuan
+                </label>
+            </div>
+            @if ($errors->has('genderInput'))
+                <p class="text-sm text-red-500 mt-1">
+                    {{ $errors->first('genderInput') }}
+                </p>
+            @endif
+        </div>
+
+        <div class="col-span-2 mt-4 flex gap-5">
+            <button id="btnBatalEdit" class="bg-white border border-[#46A616] text-[#46A616] font-semibold px-6 py-2 rounded-[15px] min-w-[170px] min-h-[47px] hover:bg-[#ebffe3] hover:text-[#46A616] transition duration-300">Batal</button>
+            <button type="submit" class="bg-[#46A616] text-white font-semibold px-6 py-2 rounded-[15px] min-w-[170px] min-h-[47px] hover:bg-[#46A616d0] transition duration-300">Simpan</button>
+        </div>
+    </form>
+</main>
+@endsection
+
+@section('request-penjemputan')
+<!-- Form Request Penjemputan -->
+<main id="formRequest" class="hidden bg-white shadow-xl rounded-[33px] p-6 w-full lg:w-3/4">
+    <p class="text-black font-semibold">
+    Home > <span class="text-black font-semibold">Request Penjemputan</span>
+    </p>
+    <h1 class="text-2xl font-bold my-4">
+    Request <span class="text-[#46A616]">Penjemputan</span>
+    </h1>
+
+    <form class="mt-4 space-y-4">
+    <!-- Pilih Bank & Tanggal Penjemputan -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+        <label class="block font-semibold mb-1">Pilih Bank Sampah</label>
+        <select class="border rounded p-2 w-full">
+            <option selected disabled>Pilih Bank Sampah</option>
+            <option>Bank Sampah A</option>
+            <option>Bank Sampah B</option>
+        </select>
+        </div>
+
+        <div>
+        <label class="block font-semibold mb-1">Tanggal Penjemputan</label>
+        <input type="date" class="border rounded p-2 w-full" />
+        </div>
+    </div>
+
+    <!-- Alamat -->
+    <div>
+        <label class="block font-semibold mb-1">Alamat</label>
+        <input
+        type="text"
+        placeholder="Masukkan alamat tempat tinggal anda"
+        class="w-full border rounded p-2"
+        />
+    </div>
+
+    <!-- Tombol Kirim -->
+    <div>
+        <button
+        type="submit"
+        class="bg-[#46A616] hover:bg-[#3d9014] shadow-md text-white px-6 py-2 rounded font-semibold"
+        >
+        Buat Request
+        </button>
+    </div>
+    </form>
+</main>
+@endsection
+
+@section('riwayat-penjemputan')
+<!-- Riwayat Penjemputan -->
+<main id="formRiwayat" class="hidden bg-white shadow-xl rounded-[33px] p-6 w-full lg:w-3/4">
+    <p class="text-black font-semibold">Home > <span class="text-black font-semibold">Riwayat Penjemputan</span></p>
+    <h1 class="text-2xl font-bold my-4">Request <span class="text-[#46A616]">Penjemputan</span></h1>
+    <ul class="list-disc ml-5 space-y-2 text-sm">
+    <li>12 Juni 2025 - Penjemputan sukses</li>
+    <li>5 Juni 2025 - Penjemputan dibatalkan</li>
+    <li>27 Mei 2025 - Penjemputan sukses</li>
+    </ul>
+</main>
+@endsection
