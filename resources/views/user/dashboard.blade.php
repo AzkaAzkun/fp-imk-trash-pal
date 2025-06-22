@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon-logo.png') }}">
     <style>
       body {
         font-family: "Poppins", sans-serif;
@@ -22,7 +23,7 @@
     <!-- LAYER BACKGROUND -->
     <div class="absolute inset-0 -z-10">
       <div
-        class="absolute inset-0 bg-gradient-to-b from-[#CCFFC3] to-[#FFFFFF]"
+        class="absolute inset-0 bg-gradient-to-b from-[#ccffc3b2] via-[#FFFFFF] to-[#ccffc3b2]"
       ></div>
     </div>
 

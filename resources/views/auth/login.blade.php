@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon-logo.png') }}">
     <style>
       body {
         font-family: "Poppins", sans-serif;
