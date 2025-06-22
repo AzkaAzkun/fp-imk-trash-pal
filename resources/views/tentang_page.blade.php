@@ -17,8 +17,8 @@
       }
     </style>
   </head>
-  <body>
-    <div class="bg-gradient-to-b from-[#CCFFC3] to-[#FFFFFF]">
+  <body class="bg-gradient-to-b from-[#ccffc3b2] via-[#FFFFFF] to-[#ccffc3b2]">
+    <div>
       <!-- Navbar Section -->
       <section class="w-full px-4 mx-auto bg-opacity-0">
         <nav
@@ -102,7 +102,7 @@
                                     <p class="text-lg font-semibold">{{ auth()->user()->nama }}</p>
                                     <p class="text-sm text-gray-500">{{ auth()->user()->email }}</p>
                                 </div>
-                                <a href="#"
+                                <a href="{{ route('dashboard') }}"
                                     class="block px-4 py-3 text-xl hover:text-[#46A616]">Dashboard</a>
                                 <form
                                     action="{{ route('auth.logout') }}"
