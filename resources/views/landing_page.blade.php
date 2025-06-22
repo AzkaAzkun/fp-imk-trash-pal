@@ -25,9 +25,9 @@
           class="mx-auto px-4 flex flex-wrap p-6 justify-between items-center"
         >
           <div class="flex items-center">
-            <a href="index.html" class="text-2xl font-bold">
+            <a href="{{ route('home') }}" class="text-2xl font-bold">
               <img
-                src="{{  asset('build/assets/Logo.png')}}"
+                src="{{  asset('images/Logo.png')}}"
                 alt="Logo"
                 class="w-60 h-20 object-cover object-[center_20%] block"
               />
@@ -61,24 +61,24 @@
           >
             <div class="flex flex-col lg:flex-row w-full items-center">
               <div
-                class="text-lg font-semibold flex gap-4 mr-0 lg:mr-24 mb-4 lg:mb-0"
+                class="text-lg font-semibold flex gap-7 mr-0 lg:mr-24 mb-4 lg:mb-0"
               >
-                <a href="#hero" class="hover:text-[#26C3F4]">Beranda</a>
-                <a href="#about" class="hover:text-[#26C3F4]">Layanan</a>
-                <a href="#skills" class="hover:text-[#26C3F4]">Tentang Kami</a>
+                <a href="#hero" class="hover:text-[#515151] px-[19px] py-[13px]">Beranda</a>
+                <a href="#about" class="hover:text-[#515151] px-[19px] py-[13px]">Layanan</a>
+                <a href="#skills" class="hover:text-[#515151] px-[19px] py-[13px]">Tentang Kami</a>
               </div>
 
               <!-- Login & Register Buttons -->
               <div class="text-lg font-semibold flex gap-4">
                 <a
-                  href="register.html"
-                  class="bg-[#46A616] text-white py-2 px-4 rounded-lg hover:bg-green-800 transition duration-300 shadow-lg"
+                  href="{{ route('register') }}"
+                  class="bg-[#46A616] text-white px-[23px] py-[11px] rounded-[15px] hover:bg-green-800 transition duration-300 shadow-lg p-4"
                 >
                   Daftar
                 </a>
                 <a
                   href="#"
-                  class="bg-white text-[#46A616] border border-[#46A616] py-2 px-4 rounded-lg hover:bg-green-700 hover:text-white transition duration-300 shadow-lg"
+                  class="bg-white text-[#46A616] border border-[#46A616] px-[23px] py-[11px] rounded-[15px] hover:bg-green-700 hover:text-white transition duration-300 shadow-lg"
                 >
                   Masuk
                 </a>
@@ -107,16 +107,16 @@
               untuk anda.
             </p>
             <button
-              class="rounded-full px-10 py-2 my-10 text-lg text-white bg-[#46A616] hover:bg-green-700 transition duration-300"
+              class="rounded-[18px] px-[19px] py-[13px] my-10 text-lg text-white bg-[#46A616] hover:bg-green-700 transition duration-300 w-[206px] h-[53px]"
             >
-            <a href="register.html">Daftar Sekarang</a>
+            <a href="{{ route('register') }}">Daftar Sekarang</a>
             </button>
           </div>
 
           <!-- Image Section: Hidden on mobile -->
           <div class="hidden lg:flex w-full lg:w-1/2 justify-center">
             <img
-              src="{{  asset('build/assets/img_hero.png')}}"
+              src="{{  asset('images/img_hero.png')}}"
               class="max-w-full h-auto"
               alt="Hero Image"
             />
@@ -151,7 +151,7 @@
       </div>
       <!-- Gambar -->
       <div class="flex justify-center">
-        <img src="{{  asset('build/assets/img1.png')}}" alt="Pendaftaran Bank Sampah" />
+        <img src="{{  asset('images/img1.png')}}" alt="Pendaftaran Bank Sampah" />
       </div>
     </section>
 
@@ -161,7 +161,7 @@
     >
       <!-- Gambar -->
       <div class="flex justify-center">
-        <img src="{{  asset('build/assets/img2.png')}}" alt="Pendaftaran Bank Sampah" />
+        <img src="{{  asset('images/img2.png')}}" alt="Pendaftaran Bank Sampah" />
       </div>
 
       <!-- Teks -->
@@ -195,7 +195,7 @@
       </div>
       <!-- Gambar -->
       <div class="flex justify-center">
-        <img src="{{  asset('build/assets/img3.png')}}" alt="Pendaftaran Bank Sampah" />
+        <img src="{{  asset('images/img3.png')}}" alt="Pendaftaran Bank Sampah" />
       </div>
     </section>
 
@@ -226,7 +226,7 @@
           rumah.
         </p>
         <button
-          class="rounded-full px-10 py-2 my-10 text-lg text-white bg-[#46A616] hover:bg-green-700 transition duration-300 text-[20px]"
+          class="rounded-[18px] px-[19px] py-[13px] my-10 text-lg text-white bg-[#46A616] hover:bg-green-700 transition duration-300 text-[20px] w-[206px] h-[53px]"
         >
           Layanan
         </button>
@@ -235,7 +235,7 @@
       <!-- Gambar: disembunyikan di mobile -->
       <div class="hidden lg:flex justify-center">
         <img
-          src="{{ asset('build/assets/img4.png') }}"
+          src="{{ asset('images/img4.png') }}"
           alt="Pendaftaran Bank Sampah"
           class="max-w-full h-auto rounded-md"
         />
@@ -243,7 +243,7 @@
     </section>
 
     <section class="py-12 mx-auto flex justify-center">
-      <img src="{{ asset('build/assets/logo_drop.png') }}" alt="Logo" />
+      <img src="{{ asset('images/logo_drop.png') }}" alt="Logo" />
     </section>
     <footer class="bg-[#46A616] text-white py-6">
       <div class="container mx-auto text-center font-bold text-[24px]">
