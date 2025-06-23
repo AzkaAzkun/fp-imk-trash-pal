@@ -190,7 +190,7 @@
 
     <form class="mt-4 space-y-4">
     <!-- Pilih Bank & Tanggal Penjemputan -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
         <label class="block font-semibold mb-1">Pilih Bank Sampah</label>
         <select class="border rounded p-2 w-full">
@@ -201,8 +201,12 @@
         </div>
 
         <div>
-        <label class="block font-semibold mb-1">Tanggal Penjemputan</label>
-        <input type="date" class="border rounded p-2 w-full" />
+            <label class="block font-semibold mb-1">Tanggal Penjemputan</label>
+            <input type="date" class="border rounded p-2 w-full" />
+        </div>
+        <div>
+            <label class="block font-semibold mb-1">Volume Sampah (kg)</label>
+            <input type="number" step="0.01" min="0" placeholder="Contoh: 2.5" class="border rounded p-2 w-full" />
         </div>
     </div>
 
