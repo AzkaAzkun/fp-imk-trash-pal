@@ -7,9 +7,11 @@
     <title>Layanan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
+      
     />
     <link rel="icon" type="image/png" href="{{ asset('images/favicon-logo.png') }}">
     <style>
@@ -156,8 +158,8 @@
           sampah terdekat
         </h1>
         <p class="text-gray-600 text-[24px] lg:text-[24px] leading-relaxed">
-          TrashPal langsung mendaftarkan anda <br />
-          ke bank sampah terdekat.
+          TrashPal langsung mendaftarkan anda
+          ke bank sampah terdekat. TrashPal akan langsung mendaftarkan anda ke bank sampah terdekat untuk membantu pemrosesan sampah anda.
         </p>
       </div>
       <!-- Gambar -->
@@ -181,9 +183,8 @@
           Permintaan jemputan <br />sampah oleh petugas
         </h1>
         <p class="text-gray-600 text-[24px] leading-relaxed">
-          TrashPal akan mengirim petugas untuk <br />
-          mengangkut sampah anda sesuai <br />
-          permintaan.
+          TrashPal akan mengirim petugas untuk
+          mengangkut sampah anda sesuai permintaan dengan sigap, tepat dan cepat. Hanya perlu klik dan sampah akan diolah.
         </p>
       </div>
     </section>
@@ -200,9 +201,9 @@
           penjemputan sampah
         </h1>
         <p class="text-gray-600 text-[24px] leading-relaxed">
-          TrashPal memberikan informasi terkait <br />
-          pengolahan sampah & mencatat setiap <br />
-          penjemputan yang terjadi.
+          TrashPal memberikan informasi terkait
+          pengolahan sampah & mencatat setiap
+          penjemputan yang terjadi. Jangan khawatir lupa, Trashpal selalu tersedia.
         </p>
       </div>
       <!-- Gambar -->
@@ -245,8 +246,8 @@
         </a>
         @else
         <a href="{{ route('login') }}"
-            class="inline-block rounded-[18px] px-[19px] py-[13px] my-10 text-lg text-white bg-[#46A616] hover:bg-green-700 transition duration-300 text-[20px] w-[206px] h-[53px] text-center">
-            Layanan
+          class="flex items-center justify-center gap-2 rounded-[18px] px-[19px] py-[13px] my-10 text-base text-white bg-[#46A616] hover:bg-green-700 transition duration-300 text-[20px] w-[206px] h-[53px] text-center">
+          Masuk Sekarang <i class="fa-solid fa-right-to-bracket text-lg"></i>
         </a>
         @endauth
       </div>

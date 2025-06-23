@@ -7,6 +7,7 @@
     <title>Tentang</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -162,9 +163,11 @@
           TrashPal merupakan aplikasi berbasis website untuk membantu pengguna dalam mengelola sampah. Tujuan kami untuk mengamalkan lingkungan yang bersih, higienis dan bebas sampah, serta memudahkan masyarakat dalam tata kelola sampah rumah tangga. Bergabung sekarang dan terima manfaat yang baik untuk lingkungan sekitar anda.
         </p>
         <button
-          class="rounded-[18px] px-[19px] py-[13px] my-10 text-lg text-white bg-[#46A616] hover:bg-green-700 transition duration-300 w-[206px] h-[53px]"
+          class="rounded-[18px] px-[19px] py-[13px] my-10 text-base text-white bg-[#46A616] hover:bg-green-700 transition duration-300 w-[206px] h-[53px]"
         >
-          <a href="{{ route('register') }}">Daftar Sekarang</a>
+          <a href="{{ route('register') }}" class="inline-flex items-center gap-2">
+              Daftar Sekarang <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
         </button>
       </div>
     </section>
@@ -204,9 +207,10 @@
         </a>
         @else
         <a href="{{ route('login') }}"
-            class="inline-block rounded-[18px] px-[19px] py-[13px] my-10 text-lg text-white bg-[#46A616] hover:bg-green-700 transition duration-300 text-[20px] w-[206px] h-[53px] text-center">
-            Layanan
+          class="flex items-center justify-center gap-2 rounded-[18px] px-[19px] py-[13px] my-10 text-base text-white bg-[#46A616] hover:bg-green-700 transition duration-300 text-[20px] w-[206px] h-[53px] text-center">
+          Masuk Sekarang <i class="fa-solid fa-right-to-bracket text-lg"></i>
         </a>
+
         @endauth
       </div>
 
