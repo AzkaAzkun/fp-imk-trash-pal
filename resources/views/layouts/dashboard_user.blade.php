@@ -6,6 +6,7 @@
     <title>Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -61,9 +62,13 @@
         const buttons = document.querySelectorAll(".tab-btn");
         const formAkunEdit = document.getElementById("formAkunEdit");
         const formAkun = document.getElementById("formAkun");
+        const formRequestEdit = document.getElementById("formRequestEdit")
+        const formRequest = document.getElementById("formRequest")
         const btnToEdit = document.getElementById("btnToEdit");
         const btnBatalEdit = document.getElementById("btnBatalEdit");
-        const sections = ["formAkun", "formRequest", "formRiwayat", "formAkunEdit"];
+        const btnToRequest = document.getElementById("btnToRequest");
+        const btnBatalRequest = document.getElementById("btnBatalRequest");
+        const sections = ["formAkun", "formRequest", "formRiwayat", "formAkunEdit", "formRequestEdit"];
 
         buttons.forEach(btn => {
             btn.addEventListener("click", function (e) {
@@ -120,7 +125,93 @@
                 if (formAkun) formAkun.classList.remove("hidden");
             });
         }
+
+        if (btnToRequest) {
+            btnToRequest.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                sections.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.add("hidden");
+                });
+
+                if (formRequestEdit) formRequestEdit.classList.remove("hidden");
+            });
+        }
+
+        if (btnBatalRequest) {
+            btnBatalRequest.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                const formInEdit = document.querySelector("#formRequestEdit form");
+                if (formInEdit) formInEdit.reset();
+
+                // Sembunyikan semua section
+                sections.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.add("hidden");
+                });
+
+                // Tampilkan kembali formAkun
+                if (formRequest) formRequest.classList.remove("hidden");
+            });
+        }
+
     });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const btnShow = document.getElementById('btnShowPasswordForm');
+            const modal = document.getElementById('passwordFormModal');
+            const btnClose = document.getElementById('btnClosePasswordForm');
+
+            if (btnShow && modal && btnClose) {
+            btnShow.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            });
+
+            btnClose.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            });
+        }
+    });
+    </script>
+    <script>
+    const penjemputans = @json($penjemputans);
+
+    function showDetail(id) {
+        const data = penjemputans.find(p => p.id === id);
+        if (!data) return;
+
+        document.getElementById('modalContent').innerHTML = `
+            <p><strong>Invoice:</strong> ${data.nomor_invoice}</p>
+            <p><strong>Status:</strong> ${data.status}</p>
+            <p><strong>Alamat Penjemputan:</strong> ${data.alamat_penjemputan}</p>
+            <p><strong>Tanggal:</strong> ${new Date(data.tanggal_penjemputan).toLocaleDateString('id-ID', {
+                year: 'numeric', month: 'long', day: 'numeric'
+            })}</p>
+            <p><strong>Volume:</strong> ${data.volume ?? '-'} kg</p>
+        `;
+        document.getElementById('detailModal').classList.remove('hidden');
+        document.getElementById('detailModal').classList.add('flex');
+    }
+
+    function closeDetail() {
+        document.getElementById('detailModal').classList.add('hidden');
+        document.getElementById('detailModal').classList.remove('flex');
+    }
+</script>
   </body>
+  @if (session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: "{{ session('success') }}",
+            confirmButtonColor: '#46A616'
+        });
+    </script>
+    @endif
 </html>

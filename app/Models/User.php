@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\UserPenjemputan;
 
 class User extends Authenticatable
 {
@@ -51,5 +52,13 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * @property \Illuminate\Database\Eloquent\Collection|\App\Models\UserPenjemputan[] $penjemputan
+     */
+    public function penjemputan()
+    {
+        return $this->hasMany(UserPenjemputan::class);
     }
 }
