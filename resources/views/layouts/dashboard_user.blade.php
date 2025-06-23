@@ -20,7 +20,7 @@
     </style>
   </head>
 
-  <body class="relative min-h-[105vh] overflow-x-hidden font-[Poppins]">
+  <body class="relative min-h-screen overflow-x-hidden font-[Poppins]">
     <!-- LAYER BACKGROUND -->
     <div class="absolute inset-0 -z-10">
       <div
@@ -33,7 +33,7 @@
       <!-- Navbar Section -->
       <section class="w-full px-4 mx-auto bg-opacity-0">
         <nav
-          class="mx-auto px-4 flex flex-wrap p-6 justify-between items-center"
+          class="mx-auto px-6 flex flex-wrap p-2 justify-between items-center"
         >
           <div class="flex items-center">
             <a href="{{ route('home') }}" class="text-2xl font-bold">
@@ -47,7 +47,7 @@
         </nav>
       </section>
 
-    <div class="flex flex-col lg:flex-row gap-8 p-6 max-w-[110rem] mx-auto min-h-[54rem]">
+    <div class="flex flex-col lg:flex-row gap-8 p-4 pt-2 max-w-[85rem] mx-auto min-h-[800px]">
         <!-- Main Form -->
 
         @yield('sidebar')

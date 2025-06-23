@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\RoleMiddleware;
 
 // web routes
 Route::get('/', function () {return view('welcome');});
@@ -12,7 +13,9 @@ Route::get('/layanan', function () {return view('layanan_page');})->name('layana
 Route::get('/tentang-kami', function () {return view('tentang_page');})->name('tentang');
 Route::get('/register', function () {return view('auth.register');})->name('register');
 Route::get('/login', function () {return view('auth.login');})->name('login');
-Route::middleware(['auth'])->group(function () {
+
+// web khusus user
+Route::middleware([RoleMiddleware::class . ':user'])->group(function () {
     Route::get('/dashboard', function () {return view('user.dashboard');})->name('dashboard');
 });
 

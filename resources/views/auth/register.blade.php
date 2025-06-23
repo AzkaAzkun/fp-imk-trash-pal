@@ -36,7 +36,7 @@
       <!-- Navbar Section -->
       <section class="w-full px-4 mx-auto">
         <nav
-          class="mx-auto px-4 flex flex-wrap p-6 justify-between items-center relative"
+          class="mx-auto px-4 flex flex-wrap p-2 justify-between items-center relative"
         >
           <!-- Logo -->
           <div class="flex items-center">
@@ -56,13 +56,13 @@
         class="flex flex-col lg:flex-row items-center justify-center px-6 pb-10 gap-14"
       >
         <!-- Form -->
-        <div class="bg-white p-6 rounded-[33px] shadow-md w-full max-w-[45rem] h-full">
-          <div class="flex flex-col md:flex-row items-center mb-5 mt-[35px] px-6 gap-4">
+        <div class="bg-white p-6 rounded-[33px] shadow-md w-full max-w-[580px] h-full">
+          <div class="flex flex-col md:flex-row items-center mb-3 mt-2 px-3 gap-4">
                 <a href="{{ route('home') }}" class="p-2 rounded-full hover:bg-gray-100 transition duration-300 text-gray-600">
                     <i class="ph ph-arrow-left text-2xl"></i>
                 </a>
 
-                <h1 class="text-3xl md:text-5xl font-bold text-center md:text-left">
+                <h1 class="text-2xl md:text-4xl font-bold text-center md:text-left">
                     Daftar <span class="text-[#46A616]">TrashPal</span>
                 </h1>
             </div>
@@ -71,12 +71,12 @@
             action="{{ route('auth.register') }}"
             method="POST"
             id="registerForm"
-            class="space-y-5 px-6"
+            class="space-y-3 py-1"
             onsubmit="return validateForm()">
             @csrf
             {{-- form nama --}}
             <div>
-              <label class="block text-xl font-light mb-3"
+              <label class="block text-xl font-light mb-1"
                 >Nama Lengkap</label
               >
               <input
@@ -90,7 +90,7 @@
             </div>
             {{-- form email --}}
             <div>
-                <label class="block text-xl font-light mb-3">Email</label>
+                <label class="block text-xl font-light mb-1">Email</label>
                 <input
                     type="email"
                     id="emailInput"
@@ -111,7 +111,7 @@
             </div>
             {{-- form nomor telephone --}}
             <div>
-              <label class="block text-xl font-light mb-3"
+              <label class="block text-xl font-light mb-1"
                 >Nomor Telepon</label
               >
               <input
@@ -125,7 +125,7 @@
             </div>
             {{-- form kata sandi --}}
             <div class="relative">
-                <label class="block text-xl font-light mb-3 ">Kata Sandi</label>
+                <label class="block text-xl font-light mb-1 ">Kata Sandi</label>
                 <div class="relative">
                     <input
                         id="passwordInput"
@@ -152,7 +152,7 @@
             </div>
             {{-- form konfirmasi kata sandi --}}
             <div>
-                <label class="block text-xl font-light mb-3"
+                <label class="block text-xl font-light mb-1"
                     >Konfirmasi Kata Sandi</label
                 >
                 <input

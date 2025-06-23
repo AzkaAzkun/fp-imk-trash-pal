@@ -20,7 +20,7 @@
     </style>
   </head>
 
-  <body class="relative min-h-screen overflow-x-hidden font-[Poppins]">
+  <body class="overflow-x-hidden font-[Poppins] min-h-[100vh]">
     <!-- LAYER BACKGROUND -->
     <div class="absolute inset-0 -z-10">
       <div
@@ -37,7 +37,7 @@
       <!-- Navbar Section -->
       <section class="w-full px-4 mx-auto">
         <nav
-          class="mx-auto px-4 flex flex-wrap p-6 justify-between items-center relative"
+          class="mx-auto px-4 flex flex-wrap p-2 justify-between items-center relative"
         >
           <!-- Logo -->
           <div class="flex items-center">
@@ -54,10 +54,10 @@
 
       <!-- Register Section -->
       <section
-        class="flex flex-col lg:flex-row items-center justify-center px-6 pb-10 pt-24 gap-10"
+        class="flex flex-col lg:flex-row items-center justify-center px-6 pb-10 pt-10 gap-10"
       >
         <!-- Form -->
-        <div class="bg-white p-6 rounded-[33px] shadow-md w-full max-w-[600px] min-h-[540px]">
+        <div class="bg-white p-6 rounded-[33px] shadow-md w-full max-w-[570px] min-h-[522px]">
             <div class="flex flex-col md:flex-row items-center mb-5 mt-[35px] px-6 gap-4">
                 <a href="{{ route('home') }}" class="p-2 rounded-full hover:bg-gray-100 transition duration-300 text-gray-600">
                     <i class="ph ph-arrow-left text-2xl"></i>

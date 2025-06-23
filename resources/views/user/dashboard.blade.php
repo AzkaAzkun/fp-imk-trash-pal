@@ -2,7 +2,7 @@
 
 @section('sidebar')
 <!-- Sidebar -->
-<aside class="bg-white shadow-xl rounded-[33px] p-8 w-full lg:w-1/4 flex flex-col items-center text-center">
+<aside class="bg-white shadow-xl rounded-[33px] p-6 w-full lg:[width:33.33333%] flex flex-col items-center text-center">
     <form action="{{ route('user.updatePhoto') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -15,18 +15,18 @@
                     ? asset('storage/foto_profil/' . auth()->user()->foto_profil)
                     : asset('images/foto-default.png') }}"
                 alt="Foto Profil"
-                class="h-24 w-24 rounded-full object-cover mb-2 mt-6 hover:opacity-80 transition"
+                class="h-24 w-24 rounded-full object-cover my-2 hover:opacity-80 transition"
             />
         </label>
     </form>
-    <h2 class="text-2xl font-semibold">{{ auth()->user()->nama }}</h2>
-    <p class="text-base text-gray-600 mb-16">{{ auth()->user()->email }}</p>
+    <h2 class="text-xl font-semibold">{{ auth()->user()->nama }}</h2>
+    <p class="text-base text-gray-600 mb-10">{{ auth()->user()->email }}</p>
     <div class="flex flex-col gap-4 w-full">
         <a href="#" class="tab-btn bg-[#46A616] text-white font-semibold justify-center flex px-4 py-2 rounded-[15px] items-center text-sm mb-4 w-full h-[51px] md:text-xl" data-target="formAkun"><i class="ph ph-user-circle mr-2 text-3xl"></i>Akun Saya</a>
         <a href="#" class="tab-btn font-semibold justify-center flex px-4 py-2 rounded-[15px] items-center text-sm mb-4 w-full h-[51px] md:text-xl hover:bg-[#ebffe3]" data-target="formRequest"><i class="ph ph-box-arrow-up mr-2 text-3xl"></i>Request Penjemputan</a>
         <a href="#" class="tab-btn font-semibold justify-center flex px-4 py-2 rounded-[15px] items-center text-sm mb-4 w-full h-[51px] md:text-xl hover:bg-[#ebffe3]" data-target="formRiwayat"><i class="ph ph-clock-counter-clockwise mr-2 text-3xl"></i>Riwayat Penjemputan</a>
     </div>
-    <div class="mt-16 w-[90%] flex flex-col gap-4">
+    <div class="mt-12 w-[90%] flex flex-col gap-4">
         <form action="">
             <a href="#" class="bg-[#46A616] hover:bg-[#46A616d0] font-semibold text-white text-semibold justify-center flex px-4 py-2 rounded-[15px] items-center gap-4 text-sm mb-4 w-full h-[51px] shadow-md md:text-xl">Ganti Password</a>
         </form>
@@ -44,39 +44,39 @@
 
 @section('akun-saya')
 <!-- Form Akun Saya -->
-<main id="formAkun" class="bg-white shadow-xl rounded-[33px] p-12 w-full lg:w-3/4">
+<main id="formAkun" class="bg-white shadow-xl rounded-[33px] p-12 w-full lg:[width:77.777777%]">
     <p class="text-black text-xl font-semibold">Home > <span class="text-black font-semibold">Akun Saya</span></p>
     <h1 class="text-4xl font-bold my-4">Akun <span class="text-[#46A616]">Saya</span></h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
             <label class="block font-semibold mb-1 text-xl">Nama</label>
-            <p class="w-full rounded text-xl py-3 text-gray-600">{{ auth()->user()->nama }}</p>
+            <p class="w-full rounded text-base py-3 text-gray-600">{{ auth()->user()->nama }}</p>
         </div>
 
         <div>
             <label class="block font-semibold mb-1 text-xl">Tanggal Lahir</label>
-            <p class="w-full rounded text-xl py-3 text-gray-600">{{ auth()->user()->tanggal_lahir ?? '-'}}</p>
+            <p class="w-full rounded text-base py-3 text-gray-600">{{ auth()->user()->tanggal_lahir ?? '-'}}</p>
         </div>
 
         <div>
             <label class="block font-semibold mb-1 text-xl">Nomor Telepon</label>
-            <p class="w-full rounded text-xl py-3 text-gray-600">{{ auth()->user()->nomor_telepon }}</p>
+            <p class="w-full rounded text-base py-3 text-gray-600">{{ auth()->user()->nomor_telepon }}</p>
         </div>
 
         <div>
             <label class="block font-semibold mb-1 text-xl">Email</label>
-            <p class="w-full rounded text-xl py-3 text-gray-600">{{ auth()->user()->email }}</p>
+            <p class="w-full rounded text-base py-3 text-gray-600">{{ auth()->user()->email }}</p>
         </div>
 
         <div>
             <label class="block font-semibold mb-1 text-xl">Alamat</label>
-            <p class="w-full rounded text-xl py-3 text-gray-600">{{ auth()->user()->alamat ?? '-' }}</p>
+            <p class="w-full rounded text-base py-3 text-gray-600">{{ auth()->user()->alamat ?? '-' }}</p>
         </div>
 
         <div>
             <label class="block font-semibold mb-1 text-xl">Jenis Kelamin</label>
-            <p class="mt-3 text-lg text-gray-600">
+            <p class="mt-3 text-base text-gray-600">
                 @if (auth()->user()->jenis_kelamin === 'L')
                     Laki - Laki
                 @elseif (auth()->user()->jenis_kelamin === 'P')
@@ -94,7 +94,7 @@
 </main>
 
 <!-- Form Akun Saya -->
-<main id="formAkunEdit" class="bg-white shadow-xl rounded-[33px] p-12 w-full lg:w-3/4 hidden">
+<main id="formAkunEdit" class="bg-white shadow-xl rounded-[33px] p-12 w-full lg:[width:77.777777%] hidden">
     <p class="text-black text-xl font-semibold">Home > <span class="text-black font-semibold">Akun Saya</span></p>
     <h1 class="text-4xl font-bold my-4">Akun <span class="text-[#46A616]">Saya</span></h1>
 
@@ -111,7 +111,11 @@
 
         <div>
             <label class="block font-semibold mb-1 text-xl">Tanggal Lahir</label>
-            <input type="date" name="tanggalLahirInput" class="w-full border rounded p-3" />
+            <input
+                type="date"
+                name="tanggalLahirInput"
+                value="{{ auth()->user()->tanggal_lahir }}"
+                class="w-full border rounded p-3" />
         </div>
 
         <div>
@@ -126,18 +130,36 @@
 
         <div class="col-span-2">
             <label class="block font-semibold mb-1 text-xl">Alamat</label>
-            <input type="text" name="alamatInput" placeholder="Masukkan alamat tempat tinggal anda" class="w-full border rounded p-3" />
+            <input
+                type="text"
+                name="alamatInput"
+                placeholder="Masukkan alamat tempat tinggal anda"
+                value="{{ auth()->user()->alamat }}"
+                class="w-full border rounded p-3" />
         </div>
 
         <div>
             <label class="block font-semibold mb-1 text-xl">Jenis Kelamin</label>
             <div class="flex items-center gap-4 mt-3">
                 <label class="inline-flex items-center">
-                    <input type="radio" name="genderInput" value="L" class="mr-2 accent-[#46A616]" required />
+                    <input
+                        type="radio"
+                        name="genderInput"
+                        value="L"
+                        class="mr-2 accent-[#46A616]"
+                        required
+                        @checked(auth()->user()->jenis_kelamin === 'L')
+                    />
                     Laki - Laki
                 </label>
                 <label class="inline-flex items-center">
-                    <input type="radio" name="genderInput" value="P" class="mr-2 accent-[#46A616]" />
+                    <input
+                        type="radio"
+                        name="genderInput"
+                        value="P"
+                        class="mr-2 accent-[#46A616]"
+                        @checked(auth()->user()->jenis_kelamin === 'P')
+                    />
                     Perempuan
                 </label>
             </div>
@@ -158,7 +180,7 @@
 
 @section('request-penjemputan')
 <!-- Form Request Penjemputan -->
-<main id="formRequest" class="hidden bg-white shadow-xl rounded-[33px] p-6 w-full lg:w-3/4">
+<main id="formRequest" class="hidden bg-white shadow-xl rounded-[33px] p-12 w-full lg:[width:77.777777%]">
     <p class="text-black font-semibold">
     Home > <span class="text-black font-semibold">Request Penjemputan</span>
     </p>
@@ -209,7 +231,7 @@
 
 @section('riwayat-penjemputan')
 <!-- Riwayat Penjemputan -->
-<main id="formRiwayat" class="hidden bg-white shadow-xl rounded-[33px] p-6 w-full lg:w-3/4">
+<main id="formRiwayat" class="hidden bg-white shadow-xl rounded-[33px] p-12 w-full lg:[width:77.777777%]">
     <p class="text-black font-semibold">Home > <span class="text-black font-semibold">Riwayat Penjemputan</span></p>
     <h1 class="text-2xl font-bold my-4">Request <span class="text-[#46A616]">Penjemputan</span></h1>
     <ul class="list-disc ml-5 space-y-2 text-sm">
