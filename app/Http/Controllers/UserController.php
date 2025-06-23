@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class UserController extends Controller
@@ -54,5 +55,28 @@ class UserController extends Controller
         $user->save();
 
         return back()->with('success', 'profil berhasil diubah!');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+
+        $user = User::find(Auth::id());
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'Password lama tidak cocok.']);
+        }
+
+        $user->password = bcrypt($request->new_password);
+
+        if ($user) {
+            $user->save();
+            return back()->with('success', 'Password berhasil diperbarui.');
+        } else {
+            return back()->withErrors(['user' => 'User tidak ditemukan.']);
+        }
     }
 }

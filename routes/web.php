@@ -4,11 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RequestController;
 use App\Http\Middleware\RoleMiddleware;
 
 // web routes
-Route::get('/', function () {return view('welcome');});
-Route::get('/home', function () {return view('landing_page');})->name('home');
+// Route::get('/', function () {return view('welcome');});
+Route::get('/', function () {return view('landing_page');})->name('home');
 Route::get('/layanan', function () {return view('layanan_page');})->name('layanan');
 Route::get('/tentang-kami', function () {return view('tentang_page');})->name('tentang');
 Route::get('/register', function () {return view('auth.register');})->name('register');
@@ -30,6 +31,9 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('users')->group(function () {
         Route::put('/update-photo', [UserController::class, 'updatePhoto'])->name('user.updatePhoto');
         Route::put('/update-profil', [UserController::class, 'updateProfil'])->name('user.updateProfil');
+        Route::post('/request-penjemputan', [RequestController::class, 'create'])->name('user.requestPenjemputan');
+        Route::post('/penjemputan/update-status', [RequestController::class, 'updateStatus'])->name('penjemputan.updateStatus');
+        Route::put('/user/update-password', [UserController::class, 'updatePassword'])->name('user.updatePassword');
         // Tambah route lain sesuai kebutuhan
     });
 });
