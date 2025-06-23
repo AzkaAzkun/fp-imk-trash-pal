@@ -1,4 +1,4 @@
-@extends('layouts.dashboard_user')
+@extends('layouts.dashboard_admin')
 
 @section('sidebar')
 <!-- Sidebar -->
@@ -22,14 +22,13 @@
     <h2 class="text-xl font-semibold">{{ auth()->user()->nama }}</h2>
     <p class="text-base text-gray-600 mb-10">{{ auth()->user()->email }}</p>
     <div class="flex flex-col gap-4 w-full">
-        <a href="#" class="tab-btn bg-[#46A616] text-white font-semibold justify-center flex px-4 py-2 rounded-[15px] items-center text-sm mb-4 w-full h-[51px] md:text-xl" data-target="formAkun"><i class="ph ph-user-circle mr-2 text-3xl"></i>Akun Saya</a>
+        <a href="#" class="tab-btn bg-[#46A616] text-white font-semibold justify-center flex px-4 py-2 rounded-[15px] items-center text-sm mb-2 w-full h-[51px] md:text-xl" data-target="formAkun"><i class="ph ph-user-circle mr-2 text-3xl"></i>Akun Saya</a>
+        <div class="border-t-2 border-black w-full"></div>
+        <a href="#" class="tab-btn font-semibold justify-center flex px-4 py-2 rounded-[15px] items-center text-sm mb-4 w-full h-[51px] md:text-xl hover:bg-[#ebffe3]" data-target="formDashboard"><i class="ph ph-house-line mr-2 text-3xl"></i>Dashboard</a>
         <a href="#" class="tab-btn font-semibold justify-center flex px-4 py-2 rounded-[15px] items-center text-sm mb-4 w-full h-[51px] md:text-xl hover:bg-[#ebffe3]" data-target="formRequest"><i class="ph ph-box-arrow-up mr-2 text-3xl"></i>Request Penjemputan</a>
-        <a href="#" class="tab-btn font-semibold justify-center flex px-4 py-2 rounded-[15px] items-center text-sm mb-4 w-full h-[51px] md:text-xl hover:bg-[#ebffe3]" data-target="formRiwayat"><i class="ph ph-clock-counter-clockwise mr-2 text-3xl"></i>Riwayat Penjemputan</a>
+        <a href="#" class="tab-btn font-semibold justify-center flex px-4 py-2 rounded-[15px] items-center text-sm mb-4 w-full h-[51px] md:text-xl hover:bg-[#ebffe3]" data-target="formRiwayat"><i class="ph ph-clock-counter-clockwise mr-2 text-3xl"></i>Catatan Penjemputan</a>
     </div>
     <div class="mt-12 w-[90%] flex flex-col gap-4">
-        <form action="">
-            <a href="#" class="bg-[#46A616] hover:bg-[#46A616d0] font-semibold text-white text-semibold justify-center flex px-4 py-2 rounded-[15px] items-center gap-4 text-sm mb-4 w-full h-[51px] shadow-md md:text-xl">Ganti Password</a>
-        </form>
         <form
             action="{{ route('auth.logout') }}"
             method="POST">
@@ -178,6 +177,62 @@
 </main>
 @endsection
 
+@section('dashboard')
+<main id="formDashboard" class="hidden bg-white shadow-xl rounded-[33px] p-12 w-full lg:[width:77.777777%]">
+    <h1 class="text-3xl font-bold text-black mb-1">DASHBOARD</h1>
+    <div class="border-b-2 border-black w-full my-2"></div>
+
+    <div class="flex justify-between items-center mt-4">
+        <h2 class="text-2xl font-semibold text-black">
+            Statistik <span class="text-[#46A616]">Aktivitas</span>
+        </h2>
+        <div>
+            <select class="border border-gray-300 rounded-lg px-3 py-1 text-sm shadow-sm">
+                <option disabled selected>Bulan</option>
+                <option value="1">Januari</option>
+                <option value="2">Februari</option>
+                <option value="3">Maret</option>
+                <option value="4">April</option>
+                <option value="5">Mei</option>
+                <option value="6">Juni</option>
+                <option value="7">Juli</option>
+                <option value="8">Agustus</option>
+                <option value="9">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        <!-- Box 1 -->
+        <div class="bg-green-600 text-white rounded-[20px] p-6 shadow-lg">
+            <p class="text-lg font-semibold">Penjemputan Selesai</p>
+            <h3 class="text-4xl font-bold mt-2">2.095</h3>
+        </div>
+
+        <!-- Box 2 -->
+        <div class="bg-red-500 text-white rounded-[20px] p-6 shadow-lg">
+            <p class="text-lg font-semibold">Penjemputan Ditolak</p>
+            <h3 class="text-4xl font-bold mt-2">106</h3>
+        </div>
+
+        <!-- Box 3 -->
+        <div class="bg-cyan-400 text-white rounded-[20px] p-6 shadow-lg">
+            <p class="text-lg font-semibold">Sampah Diterima (KG)</p>
+            <h3 class="text-4xl font-bold mt-2">191.02</h3>
+        </div>
+
+        <!-- Box 4 -->
+        <div class="bg-yellow-500 text-white rounded-[20px] p-6 shadow-lg">
+            <p class="text-lg font-semibold">Peningkatan Aktivitas</p>
+            <h3 class="text-4xl font-bold mt-2">67,54%</h3>
+        </div>
+    </div>
+</main> 
+@endsection
+
 @section('request-penjemputan')
 <!-- Form Request Penjemputan -->
 <main id="formRequest" class="hidden bg-white shadow-xl rounded-[33px] p-12 w-full lg:[width:77.777777%]">
@@ -229,55 +284,15 @@
 </main>
 @endsection
 
-@section('riwayat-penjemputan')
+@section('catatan-penjemputan')
+<!-- Riwayat Penjemputan -->
 <main id="formRiwayat" class="hidden bg-white shadow-xl rounded-[33px] p-12 w-full lg:[width:77.777777%]">
     <p class="text-black font-semibold">Home > <span class="text-black font-semibold">Riwayat Penjemputan</span></p>
-    <h1 class="text-3xl font-bold my-4">Riwayat <span class="text-[#46A616]">Penjemputan</span></h1>
-
-    <div class="flex flex-col gap-4 text-sm mt-6">
-
-        {{-- STATUS SELESAI --}}
-        <div class="border border-[#46A616] rounded-[15px] p-4 flex flex-col shadow-md">
-            <div class="flex justify-between items-center">
-                <p class="font-semibold text-black">Invoice No. : <span class="font-bold">INV/20251510/TP/001</span></p>
-                <span class="text-white bg-[#46A616] px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-                    <i class="ph ph-check-circle text-sm"></i> Selesai
-                </span>
-            </div>
-            <div class="flex justify-between items-center mt-2">
-                <p class="text-gray-500">15 Oktober 2025</p>
-                <a href="#" class="text-[#46A616] font-semibold hover:underline">Detail Transaksi</a>
-            </div>
-        </div>
-
-        {{-- STATUS DIPROSES --}}
-        <div class="border border-[#f5a623] rounded-[15px] p-4 flex flex-col shadow-md">
-            <div class="flex justify-between items-center">
-                <p class="font-semibold text-black">Invoice No. : <span class="font-bold">INV/20251510/TP/001</span></p>
-                <span class="text-white bg-[#f5a623] px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-                    <i class="ph ph-clock text-sm"></i> Diproses
-                </span>
-            </div>
-            <div class="flex justify-between items-center mt-2">
-                <p class="text-gray-500">15 Oktober 2025</p>
-                <a href="#" class="text-[#f5a623] font-semibold hover:underline">Detail Transaksi</a>
-            </div>
-        </div>
-
-        {{-- STATUS DIBATALKAN --}}
-        <div class="border border-[#E05555] rounded-[15px] p-4 flex flex-col shadow-md">
-            <div class="flex justify-between items-center">
-                <p class="font-semibold text-black">Invoice No. : <span class="font-bold">INV/20251510/TP/001</span></p>
-                <span class="text-white bg-[#E05555] px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-                    <i class="ph ph-x-circle text-sm"></i> Dibatalkan
-                </span>
-            </div>
-            <div class="flex justify-between items-center mt-2">
-                <p class="text-gray-500">15 Oktober 2025</p>
-                <a href="#" class="text-[#E05555] font-semibold hover:underline">Detail Transaksi</a>
-            </div>
-        </div>
-
-    </div>
+    <h1 class="text-2xl font-bold my-4">Request <span class="text-[#46A616]">Penjemputan</span></h1>
+    <ul class="list-disc ml-5 space-y-2 text-sm">
+    <li>12 Juni 2025 - Penjemputan sukses</li>
+    <li>5 Juni 2025 - Penjemputan dibatalkan</li>
+    <li>27 Mei 2025 - Penjemputan sukses</li>
+    </ul>
 </main>
 @endsection

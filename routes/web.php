@@ -13,6 +13,7 @@ Route::get('/layanan', function () {return view('layanan_page');})->name('layana
 Route::get('/tentang-kami', function () {return view('tentang_page');})->name('tentang');
 Route::get('/register', function () {return view('auth.register');})->name('register');
 Route::get('/login', function () {return view('auth.login');})->name('login');
+Route::get('/dashboardmin', function () {return view('user.dashboardmin');})->name('dashboardmin');
 
 // web khusus user
 Route::middleware([RoleMiddleware::class . ':user'])->group(function () {
