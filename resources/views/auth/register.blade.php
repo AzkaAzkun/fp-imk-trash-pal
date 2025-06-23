@@ -56,7 +56,7 @@
         class="flex flex-col lg:flex-row items-center justify-center px-6 pb-10 gap-14"
       >
         <!-- Form -->
-        <div class="bg-white p-6 rounded-[33px] shadow-md w-full max-w-[580px] h-full">
+        <div class="bg-white p-6 rounded-[33px] shadow-md w-full max-w-[540px] h-full">
           <div class="flex flex-col md:flex-row items-center mb-3 mt-2 px-3 gap-4">
                 <a href="{{ route('home') }}" class="p-2 rounded-full hover:bg-gray-100 transition duration-300 text-gray-600">
                     <i class="ph ph-arrow-left text-2xl"></i>

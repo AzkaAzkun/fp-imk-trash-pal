@@ -57,13 +57,13 @@
         class="flex flex-col lg:flex-row items-center justify-center px-6 pb-10 pt-10 gap-10"
       >
         <!-- Form -->
-        <div class="bg-white p-6 rounded-[33px] shadow-md w-full max-w-[570px] min-h-[522px]">
+        <div class="bg-white p-6 rounded-[33px] shadow-md min-w-[540px] min-h-[540px] w-full max-w-md">
             <div class="flex flex-col md:flex-row items-center mb-5 mt-[35px] px-6 gap-4">
                 <a href="{{ route('home') }}" class="p-2 rounded-full hover:bg-gray-100 transition duration-300 text-gray-600">
                     <i class="ph ph-arrow-left text-2xl"></i>
                 </a>
 
-                <h1 class="text-3xl md:text-5xl font-bold text-center md:text-left">
+                <h1 class="text-2xl md:text-4xl font-bold text-center md:text-left">
                     Login <span class="text-[#46A616]">TrashPal</span>
                 </h1>
             </div>
@@ -71,7 +71,7 @@
           <form
             action="{{ route('auth.login') }}"
             method='POST'
-            class="space-y-5 px-6">
+            class="space-y-4 px-6">
             @csrf
            {{-- form email --}}
             <div>
