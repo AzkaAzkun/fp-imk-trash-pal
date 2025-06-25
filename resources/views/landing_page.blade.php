@@ -72,7 +72,7 @@
                 <p class="text-lg font-semibold">{{ auth()->user()->nama }}</p>
                 <p class="text-sm text-gray-500">{{ auth()->user()->email }}</p>
               </div>
-              <a href="{{ route('dashboard') }}" class="block px-4 py-3 text-xl hover:text-[#46A616]">Dashboard</a>
+              <a href="{{ auth()->user()->role === 'admin'? route('admin.dashboard'): route('dashboard') }}" class="block px-4 py-3 text-xl hover:text-[#46A616]">Dashboard</a>
               <form action="{{ route('auth.logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="w-full text-left px-4 py-3 text-xl hover:text-[#46A616]">Keluar</button>
@@ -155,7 +155,7 @@
         rumah.
       </p>
       @auth
-      <a href="{{ route('dashboard') }}"
+      <a href="{{ auth()->user()->role === 'admin'? route('admin.dashboard'): route('dashboard') }}"
       class="inline-block rounded-[18px] px-[19px] py-[13px] my-10 text-lg text-white bg-[#46A616] hover:bg-green-700 transition duration-300 text-[20px] w-[206px] h-[53px] text-center">
       Layanan
       </a>

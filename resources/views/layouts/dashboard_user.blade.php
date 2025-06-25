@@ -179,30 +179,30 @@
     });
     </script>
     <script>
-    const penjemputans = @json($penjemputans);
+        const penjemputans = @json($penjemputans);
 
-    function showDetail(id) {
-        const data = penjemputans.find(p => p.id === id);
-        if (!data) return;
+        function showDetail(id) {
+            const data = penjemputans.find(p => p.id === id);
+            if (!data) return;
 
-        document.getElementById('modalContent').innerHTML = `
-            <p><strong>Invoice:</strong> ${data.nomor_invoice}</p>
-            <p><strong>Status:</strong> ${data.status}</p>
-            <p><strong>Alamat Penjemputan:</strong> ${data.alamat_penjemputan}</p>
-            <p><strong>Tanggal:</strong> ${new Date(data.tanggal_penjemputan).toLocaleDateString('id-ID', {
-                year: 'numeric', month: 'long', day: 'numeric'
-            })}</p>
-            <p><strong>Volume:</strong> ${data.volume ?? '-'} kg</p>
-        `;
-        document.getElementById('detailModal').classList.remove('hidden');
-        document.getElementById('detailModal').classList.add('flex');
-    }
+            document.getElementById('modalContent').innerHTML = `
+                <p><strong>Invoice:</strong> ${data.nomor_invoice}</p>
+                <p><strong>Status:</strong> ${data.status}</p>
+                <p><strong>Alamat Penjemputan:</strong> ${data.alamat_penjemputan}</p>
+                <p><strong>Tanggal:</strong> ${new Date(data.tanggal_penjemputan).toLocaleDateString('id-ID', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                })}</p>
+                <p><strong>Volume:</strong> ${data.volume ?? '-'} kg</p>
+            `;
+            document.getElementById('detailModal').classList.remove('hidden');
+            document.getElementById('detailModal').classList.add('flex');
+        }
 
-    function closeDetail() {
-        document.getElementById('detailModal').classList.add('hidden');
-        document.getElementById('detailModal').classList.remove('flex');
-    }
-</script>
+        function closeDetail() {
+            document.getElementById('detailModal').classList.add('hidden');
+            document.getElementById('detailModal').classList.remove('flex');
+        }
+    </script>
   </body>
   @if (session('success'))
     <script>
