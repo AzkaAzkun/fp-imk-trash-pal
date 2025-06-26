@@ -333,8 +333,7 @@
                 $icon = '';
         }
     @endphp
-    <div class="border {{ $border }} rounded-xl p-4 flex items-start justify-between gap-4 mb-4">
-    <div class="flex gap-4 items-start">
+    <div class="border {{ $border }} rounded-xl p-4 flex gap-4 items-start mb-4">
         <img src="{{ $request->user->foto_profil ? asset('storage/foto_profil/' . $request->user->foto_profil) : asset('images/foto-default.png') }}" alt="Foto User" class="w-14 h-14 rounded-full object-cover" />
         <div>
             <p class="font-bold text-lg">Nama : {{ $request->user->nama }}</p>
