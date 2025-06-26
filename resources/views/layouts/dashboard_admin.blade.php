@@ -6,6 +6,7 @@
     <title>Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,26 +29,7 @@
       ></div>
     </div>
 
-    <!-- KONTEN UTAMA -->
-    <div class="relative z-10">
-      <!-- Navbar Section -->
-      <section class="w-full px-4 mx-auto bg-opacity-0">
-        <nav
-          class="mx-auto px-6 flex flex-wrap p-2 justify-between items-center"
-        >
-          <div class="flex items-center">
-            <a href="{{ route('home') }}" class="text-2xl font-bold">
-              <img
-                src="{{  asset('images/Logo.png')}}"
-                alt="Logo"
-                class="w-60 h-20 object-cover object-[center_20%] block"
-              />
-            </a>
-          </div>
-        </nav>
-      </section>
-
-    <div class="flex flex-col lg:flex-row gap-8 p-4 pt-2 max-w-[85rem] mx-auto min-h-[800px]">
+    <div class="flex flex-col lg:flex-row gap-8 p-4 pt-10 max-w-[90rem] mx-auto min-h-[830px]">
         <!-- Main Form -->
 
         @yield('sidebar')
@@ -123,5 +105,34 @@
         }
     });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const btnShow = document.getElementById('btnShowPasswordForm');
+            const modal = document.getElementById('passwordFormModal');
+            const btnClose = document.getElementById('btnClosePasswordForm');
+
+            if (btnShow && modal && btnClose) {
+            btnShow.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            });
+
+            btnClose.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            });
+        }
+    });
+    </script>
+    @if (session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: "{{ session('success') }}",
+            confirmButtonColor: '#46A616'
+        });
+    </script>
+    @endif
   </body>
 </html>

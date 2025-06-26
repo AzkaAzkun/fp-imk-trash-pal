@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RequestController;
 use App\Http\Middleware\RoleMiddleware;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PenjemputanController;
 
 // web routes
 // Route::get('/', function () {return view('welcome');});
@@ -14,11 +16,18 @@ Route::get('/layanan', function () {return view('layanan_page');})->name('layana
 Route::get('/tentang-kami', function () {return view('tentang_page');})->name('tentang');
 Route::get('/register', function () {return view('auth.register');})->name('register');
 Route::get('/login', function () {return view('auth.login');})->name('login');
-Route::get('/dashboardmin', function () {return view('user.dashboardmin');})->name('dashboardmin');
 
 // web khusus user
 Route::middleware([RoleMiddleware::class . ':user'])->group(function () {
     Route::get('/dashboard', function () {return view('user.dashboard');})->name('dashboard');
+});
+
+// web khusus admin
+Route::middleware([RoleMiddleware::class . ':admin'])->group(function () {
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::post('/admin/penjemputan/{id}/approve', [PenjemputanController::class, 'approve'])->name('penjemputan.approve');
+    Route::post('/admin/penjemputan/{id}/progress', [PenjemputanController::class, 'progress'])->name('penjemputan.progress');
+    Route::post('/admin/penjemputan/{id}/reject', [PenjemputanController::class, 'reject'])->name('penjemputan.reject');
 });
 
 // Authentication routes

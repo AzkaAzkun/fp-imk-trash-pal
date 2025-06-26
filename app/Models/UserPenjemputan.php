@@ -31,6 +31,11 @@ class UserPenjemputan extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function bank_sampah()
+    {
+        return $this->belongsTo(User::class, 'bank_sampah_id');
     }
 }

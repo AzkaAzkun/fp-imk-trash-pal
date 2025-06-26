@@ -14,7 +14,7 @@ return new class () extends Migration {
     {
         Schema::create('user_penjemputan', function (Blueprint $table) {
             $table->id();
-            $table->integer('bank_sampah_id');
+            $table->foreignId('bank_sampah_id')->constrained('user');
             $table->date('tanggal_penjemputan');
             $table->string('alamat_penjemputan');
             $table->enum('status', array_column(UserPenjemputanEnum::cases(), 'value'));

@@ -85,7 +85,7 @@
                 </div>
                 </form>
             </div>
-            </div>
+        </div>
         <form
             action="{{ route('auth.logout') }}"
             method="POST">
